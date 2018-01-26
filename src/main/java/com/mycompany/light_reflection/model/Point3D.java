@@ -23,6 +23,12 @@ public class Point3D {
         this.z = z;
     }
     
+    // Getter
+    
+    public Point2D getPoint2D() {
+        return point2D;
+    }
+
     // Getters and Setters
     
     public double getX() {
