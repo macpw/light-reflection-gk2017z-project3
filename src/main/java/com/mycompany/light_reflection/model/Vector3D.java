@@ -44,8 +44,12 @@ public class Vector3D {
     
     // Methods
     
+    public double length() {
+        return Math.sqrt(x*x+y*y+z*z);
+    }
+    
     public void normalize() {
-        double length = Math.sqrt(x*x+y*y+z*z);
+        double length = length();
         if (length > 0) {
             x = x/length;
             y = y/length;
