@@ -19,7 +19,7 @@ public class NJTextFieldDocumentListener extends AbstractJTextFieldDocumentListe
         try {
             double parsedDouble = Double.parseDouble(jTextField.getText());
             viewportModel.setN(parsedDouble);
-            jTextField.setToolTipText("n="+viewportModel.getN());
+            jTextField.setToolTipText("n="+(int)viewportModel.getN());
         } catch (NumberFormatException nfe) {
             jTextField.setBackground(Color.orange);
         }

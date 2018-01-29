@@ -19,7 +19,7 @@ public class I_pJTextFieldDocumentListener extends AbstractJTextFieldDocumentLis
         try {
             double d = Double.parseDouble(jTextField.getText());
             viewportModel.setI_p(d);
-            jTextField.setToolTipText("<html>I<sub>p</sub>="+viewportModel.getI_p()+"</html>");
+            jTextField.setToolTipText("<html>I<sub>p</sub>="+(int)viewportModel.getI_p()+"</html>");
         } catch (NumberFormatException nfe) {
             jTextField.setBackground(Color.orange);
         }
