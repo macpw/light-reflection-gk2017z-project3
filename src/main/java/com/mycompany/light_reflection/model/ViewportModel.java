@@ -12,16 +12,16 @@ public class ViewportModel extends Observable {
     private final int viewportWidth;
     private final int viewportHeight;
     private double focalDistance = 200;// distance between observer and viewport
-    private final Point3D light = new Point3D(-200, +500, +200);
+    private final Point3D light = new Point3D(-300, +300, 0);
     private final Sphere sphere = new Sphere(0, 0, 400, 200, Color.magenta, Color.cyan);
     
     double I_a = 125;
     double I_p = 250;
-    double n = 100;
-    double k_a = 0.99;
-    double k_d = 0.85;
+    double n = 45;
+    double k_a = 0.95;
+    double k_d = 0.75;
     double k_s = 0.25;
-    double c = 0.20;
+    double c = 0.45;
     
     public ViewportModel(int viewportWidth, int viewportHeight) {
         this.viewportWidth = viewportWidth;
