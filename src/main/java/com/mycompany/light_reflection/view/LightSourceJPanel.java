@@ -21,14 +21,14 @@ public final class LightSourceJPanel extends JPanel {
     private final JLabel yJLabel = new JLabel("y = ");
     private final JLabel zJLabel = new JLabel("z = ");
     
-    private final JTextField xJTextField = new JTextField(columnsForJTextField);
-    private final JTextField yJTextField = new JTextField(columnsForJTextField);
-    private final JTextField zJTextField = new JTextField(columnsForJTextField);
+    private final JTextField lightSourceXJTextField = new JTextField(columnsForJTextField);
+    private final JTextField lightSourceYJTextField = new JTextField(columnsForJTextField);
+    private final JTextField lightSourceZJTextField = new JTextField(columnsForJTextField);
     
     public LightSourceJPanel() {
-        xJTextField.setHorizontalAlignment(JTextField.CENTER);
-        yJTextField.setHorizontalAlignment(JTextField.CENTER);
-        zJTextField.setHorizontalAlignment(JTextField.CENTER);
+        lightSourceXJTextField.setHorizontalAlignment(JTextField.CENTER);
+        lightSourceYJTextField.setHorizontalAlignment(JTextField.CENTER);
+        lightSourceZJTextField.setHorizontalAlignment(JTextField.CENTER);
         
         this.setBorder(new TitledBorder("Light Source"));
         this.setLayout(new GridBagLayout());
@@ -37,30 +37,30 @@ public final class LightSourceJPanel extends JPanel {
         gbc.gridy++;
         this.add(xJLabel, gbc);
         gbc.gridx++;
-        this.add(xJTextField, gbc);
+        this.add(lightSourceXJTextField, gbc);
         gbc.gridx--;
         gbc.gridy++;
         this.add(yJLabel, gbc);
         gbc.gridx++;
-        this.add(yJTextField, gbc);
+        this.add(lightSourceYJTextField, gbc);
         gbc.gridx--;
         gbc.gridy++;
         this.add(zJLabel, gbc);
         gbc.gridx++;
-        this.add(zJTextField, gbc);
+        this.add(lightSourceZJTextField, gbc);
     }
     // Getters
     
-    public JTextField getxJTextField() {
-        return xJTextField;
+    public JTextField getLightSourceXJTextField() {
+        return lightSourceXJTextField;
     }
     
-    public JTextField getyJTextField() {
-        return yJTextField;
+    public JTextField getLightSourceYJTextField() {
+        return lightSourceYJTextField;
     }
     
-    public JTextField getzJTextField() {
-        return zJTextField;
+    public JTextField getLightSourceZJTextField() {
+        return lightSourceZJTextField;
     }
     
     // Test LightSourceJPanel
