@@ -6,6 +6,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -14,7 +15,9 @@ import javax.swing.JPanel;
 public class View {
     
     private final ViewportJPanel viewportJPanel;
-    private final FocalDistanceJPanel focalDistanceJPanel = new FocalDistanceJPanel();
+    //private final FocalDistanceJPanel focalDistanceJPanel = new FocalDistanceJPanel();
+    private final PhongReflectionModelJPanel phongReflectionModelJPanel = new PhongReflectionModelJPanel();
+    private final LightSourceJPanel lightSourceJPanel = new LightSourceJPanel();
     
     public View(int viewportWidth, int viewportHeight) {
         this.viewportJPanel = new ViewportJPanel(viewportWidth, viewportHeight);
@@ -27,8 +30,16 @@ public class View {
         return viewportJPanel;
     }
     
-    public FocalDistanceJPanel getFocalDistanceJPanel() {
-        return focalDistanceJPanel;
+    //public FocalDistanceJPanel getFocalDistanceJPanel() {
+    //    return focalDistanceJPanel;
+    //}
+    
+    public PhongReflectionModelJPanel getPhongReflectionModelJPanel() {
+        return phongReflectionModelJPanel;
+    }
+    
+    public LightSourceJPanel getLightSourceJPanel() {
+        return lightSourceJPanel;
     }
     
     // Methods
@@ -39,11 +50,19 @@ public class View {
         jFrame.setMinimumSize(new Dimension(160, 120));
         
         JPanel mainJPanel = new JPanel();
-        jFrame.add(mainJPanel);
+        JScrollPane mainJScrollPane = new JScrollPane(mainJPanel);
+        jFrame.add(mainJScrollPane);
         this.addComponentsToPane(mainJPanel);
         
         jFrame.pack();
-        jFrame.setMinimumSize(jFrame.getPreferredSize());
+        Dimension verticalScrollBarPreferredSize = mainJScrollPane.getVerticalScrollBar().getPreferredSize();
+        Dimension horizontalScrollBarPreferredSize = mainJScrollPane.getHorizontalScrollBar().getPreferredSize();
+        Dimension preferredSize = jFrame.getPreferredSize();
+        Dimension minimumSize = new Dimension(
+                preferredSize.width  + verticalScrollBarPreferredSize.width, 
+                preferredSize.height + horizontalScrollBarPreferredSize.height
+        );
+        jFrame.setMinimumSize(minimumSize);
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
     }
@@ -56,17 +75,18 @@ public class View {
         pane.add(viewportJPanel, gbc);
         pane.add(controlJPanel, gbc);
         
-        gbc.fill = GridBagConstraints.BOTH;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 1.0d;
         gbc.weighty = 1.0d;
         
         gbc.gridx = GridBagConstraints.RELATIVE; // back to default
         gbc.gridwidth = 2; // focalDistanceJPanel width
-        controlJPanel.add(focalDistanceJPanel, gbc);
+        //controlJPanel.add(focalDistanceJPanel, gbc);
         gbc.gridwidth = 1; // back to default
         gbc.gridy = 1;
-        //controlJPanel.add(motionControlJPanel, gbc);
-        //controlJPanel.add(rotationControlJPanel, gbc);
+        controlJPanel.add(phongReflectionModelJPanel, gbc);
+        gbc.anchor = GridBagConstraints.NORTH;
+        controlJPanel.add(lightSourceJPanel, gbc);
     }
     
     // Test View
