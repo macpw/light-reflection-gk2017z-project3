@@ -17,8 +17,8 @@ public class K_aJTextFieldDocumentListener extends AbstractJTextFieldDocumentLis
     @Override
     protected void doUpdate() {
         try {
-            double d = Double.parseDouble(jTextField.getText());
-            viewportModel.setK_a(d);
+            double parsedDouble = Double.parseDouble(jTextField.getText());
+            viewportModel.setK_a(parsedDouble);
             jTextField.setToolTipText("<html>k<sub>a</sub>="+viewportModel.getK_a()+"</html>");
         } catch (NumberFormatException nfe) {
             jTextField.setBackground(Color.orange);
