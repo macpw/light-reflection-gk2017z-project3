@@ -1,5 +1,6 @@
 package com.mycompany.light_reflection.view;
 
+import com.mycompany.light_reflection.view.util.IntegerDocumentFilter;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.Document;
 
 /**
  *
@@ -29,6 +32,15 @@ public final class LightSourceJPanel extends JPanel {
         lightSourceXJTextField.setHorizontalAlignment(JTextField.CENTER);
         lightSourceYJTextField.setHorizontalAlignment(JTextField.CENTER);
         lightSourceZJTextField.setHorizontalAlignment(JTextField.CENTER);
+        
+        IntegerDocumentFilter integerDocumentFilter = new IntegerDocumentFilter();
+        
+        Document lightSourceXJTextFieldDocument = lightSourceXJTextField.getDocument();
+        ((AbstractDocument) lightSourceXJTextFieldDocument).setDocumentFilter(integerDocumentFilter);
+        Document lightSourceYJTextFieldDocument = lightSourceYJTextField.getDocument();
+        ((AbstractDocument) lightSourceYJTextFieldDocument).setDocumentFilter(integerDocumentFilter);
+        Document lightSourceZJTextFieldDocument = lightSourceZJTextField.getDocument();
+        ((AbstractDocument) lightSourceZJTextFieldDocument).setDocumentFilter(integerDocumentFilter);
         
         this.setBorder(new TitledBorder("Light Source"));
         this.setLayout(new GridBagLayout());
