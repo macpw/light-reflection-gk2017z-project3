@@ -1,12 +1,17 @@
 package com.mycompany.light_reflection.model;
 
 import java.awt.geom.Point2D;
+import java.util.Comparator;
 
 /**
  *
  * @author Paweł Mac
  */
 public class Point3D {
+    
+    public static final Point3D.XComparator X_COMPARATOR = new Point3D.XComparator();
+    public static final Point3D.YComparator Y_COMPARATOR = new Point3D.YComparator();
+    public static final Point3D.ZComparator Z_COMPARATOR = new Point3D.ZComparator();
     
     double x;
     double y;
@@ -96,5 +101,29 @@ public class Point3D {
     @Override
     public String toString() {
         return "Point3D{" + "x=" + x + ", y=" + y + ", z=" + z + ", point2D=" + point2D + '}';
+    }
+    
+    public static class XComparator implements Comparator<Point3D> {
+        
+        @Override
+        public int compare(Point3D p1, Point3D p2) {
+            return Double.compare(p1.x, p2.x);
+        }
+    }
+    
+    public static class YComparator implements Comparator<Point3D> {
+        
+        @Override
+        public int compare(Point3D p1, Point3D p2) {
+            return Double.compare(p1.y, p2.y);
+        }
+    }
+    
+    public static class ZComparator implements Comparator<Point3D> {
+        
+        @Override
+        public int compare(Point3D p1, Point3D p2) {
+            return Double.compare(p1.z, p2.z);
+        }
     }
 }
