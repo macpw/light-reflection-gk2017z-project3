@@ -55,6 +55,12 @@ public class Point3D {
         this.z = z;
     }
     
+    public void setXYZ(double x, double y, double z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    
     public boolean isInFrontOfViewport() {
         return inFrontOfViewport;
     }
