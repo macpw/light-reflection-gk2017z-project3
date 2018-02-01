@@ -82,11 +82,7 @@ public final class ViewportJPanel extends JPanel implements Observer {
                             color = sphere.getExternalColor();
                         } else {
                             point3D = p2;
-                            if (p2.isInFrontOfViewport(focalDistance)) {
-                                color = sphere.getInternalColor();
-                            } else {
-                                color = backgroundColor;
-                            }
+                            color = sphere.getInternalColor();
                         }
                         point3D.calculatePoint2D(focalDistance, viewportWidth, viewportHeight);
                         Point2D point2D = point3D.getPoint2D();
@@ -125,6 +121,10 @@ public final class ViewportJPanel extends JPanel implements Observer {
                         blue  = (int) (I*color.getBlue()/255.0);
                         
                         color = new Color(red, green, blue);
+                        
+                        if (!p1.isInFrontOfViewport(focalDistance) && !p2.isInFrontOfViewport(focalDistance)) {
+                            color = backgroundColor;
+                        }
                         
                         g2D.setPaint(color);
                         g2D.draw(new Line2D.Double(point2D, point2D));
