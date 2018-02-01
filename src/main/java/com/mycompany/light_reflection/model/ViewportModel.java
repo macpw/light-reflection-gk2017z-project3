@@ -54,6 +54,7 @@ public class ViewportModel extends Observable {
     
     public void setFocalDistance(double focalDistance) {    
         this.focalDistance = focalDistance;
+        this.update();
     }
     
     public double getI_a() {
