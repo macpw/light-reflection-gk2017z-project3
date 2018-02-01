@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 public class View {
     
     private final ViewportJPanel viewportJPanel;
-    //private final FocalDistanceJPanel focalDistanceJPanel = new FocalDistanceJPanel();
+    private final FocalDistanceJPanel focalDistanceJPanel = new FocalDistanceJPanel();
     private final PhongReflectionModelJPanel phongReflectionModelJPanel = new PhongReflectionModelJPanel();
     private final LightSourceJPanel lightSourceJPanel = new LightSourceJPanel();
     
@@ -30,9 +30,9 @@ public class View {
         return viewportJPanel;
     }
     
-    //public FocalDistanceJPanel getFocalDistanceJPanel() {
-    //    return focalDistanceJPanel;
-    //}
+    public FocalDistanceJPanel getFocalDistanceJPanel() {
+        return focalDistanceJPanel;
+    }
     
     public PhongReflectionModelJPanel getPhongReflectionModelJPanel() {
         return phongReflectionModelJPanel;
@@ -79,14 +79,14 @@ public class View {
         gbc.weightx = 1.0d;
         gbc.weighty = 1.0d;
         
-        gbc.gridx = GridBagConstraints.RELATIVE; // back to default
-        gbc.gridwidth = 2; // focalDistanceJPanel width
-        //controlJPanel.add(focalDistanceJPanel, gbc);
-        gbc.gridwidth = 1; // back to default
+        gbc.gridx = GridBagConstraints.RELATIVE; // default
         gbc.gridy = 1;
         controlJPanel.add(phongReflectionModelJPanel, gbc);
         gbc.anchor = GridBagConstraints.NORTH;
         controlJPanel.add(lightSourceJPanel, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 2; // focalDistanceJPanel width
+        controlJPanel.add(focalDistanceJPanel, gbc);
     }
     
     // Test View
