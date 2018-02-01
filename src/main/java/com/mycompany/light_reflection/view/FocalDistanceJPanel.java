@@ -19,7 +19,7 @@ public final class FocalDistanceJPanel extends JPanel {
     
     private static final int JSLIDER_WIDTH = 400;
     private static final int MINIMUM_VALUE = 10;
-    private final int maximumValue = 400;
+    private final int maximumValue = 1000;
     
     private final JLabel focalDistanceJLabel = new JLabel("focal distance");
     private final JSlider focalDistanceJSlider = new JSlider();
