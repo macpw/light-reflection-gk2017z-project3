@@ -1,10 +1,13 @@
 package com.mycompany.light_reflection.controller;
 
 import com.mycompany.light_reflection.model.ViewportModel;
+import com.mycompany.light_reflection.view.FocalDistanceJPanel;
 import com.mycompany.light_reflection.view.LightSourceJPanel;
 import com.mycompany.light_reflection.view.PhongReflectionModelJPanel;
 import com.mycompany.light_reflection.view.View;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JSlider;
 import javax.swing.JTextField;
 
 /**
@@ -23,6 +26,7 @@ public class Controller {
     private static void addListener(ViewportModel viewportModel, View view) {
         PhongReflectionModelJPanel phongReflectionModelJPanel = view.getPhongReflectionModelJPanel();
         LightSourceJPanel lightSourceJPanel = view.getLightSourceJPanel();
+        FocalDistanceJPanel focalDistanceJPanel = view.getFocalDistanceJPanel();
         
         JButton descriptionJButton = phongReflectionModelJPanel.getDescriptionJButton();
         JTextField i_aJTextField = phongReflectionModelJPanel.getI_aJTextField();
@@ -35,6 +39,8 @@ public class Controller {
         JTextField lightSourceXJTextField = lightSourceJPanel.getLightSourceXJTextField();
         JTextField lightSourceYJTextField = lightSourceJPanel.getLightSourceYJTextField();
         JTextField lightSourceZJTextField = lightSourceJPanel.getLightSourceZJTextField();
+        JLabel focalDistanceJLabel = focalDistanceJPanel.getFocalDistanceJLabel();
+        JSlider focalDistanceJSlider = focalDistanceJPanel.getFocalDistanceJSlider();
         
         i_aJTextField.setText(Integer.toString((int)viewportModel.getI_a()));
         i_aJTextField.setToolTipText("<html>I<sub>a</sub>="+(int)viewportModel.getI_a()+"</html>");
@@ -56,6 +62,9 @@ public class Controller {
         lightSourceYJTextField.setToolTipText("y="+(int)viewportModel.getLightY());
         lightSourceZJTextField.setText(Integer.toString((int)viewportModel.getLightZ()));
         lightSourceZJTextField.setToolTipText("z="+(int)viewportModel.getLightZ());
+        
+        focalDistanceJLabel.setText(Integer.toString((int) viewportModel.getFocalDistance()));
+        focalDistanceJSlider.setValue((int) viewportModel.getFocalDistance());
         
         DescriptionJButtonAction descriptionJButtonAction = new DescriptionJButtonAction(view);
         descriptionJButton.addActionListener(descriptionJButtonAction);
@@ -89,5 +98,8 @@ public class Controller {
         
         LightSourceZJTextFieldDocumentListener lightSourceZJTextFieldDocumentListener = new LightSourceZJTextFieldDocumentListener(viewportModel, lightSourceZJTextField);
         lightSourceZJTextField.getDocument().addDocumentListener(lightSourceZJTextFieldDocumentListener);
+        
+        FocalDistanceJSliderChangeListener focalDistanceJSliderChangeListener = new FocalDistanceJSliderChangeListener(viewportModel, focalDistanceJLabel);
+        focalDistanceJSlider.addChangeListener(focalDistanceJSliderChangeListener);
     }
 }
